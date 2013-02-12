@@ -27,7 +27,6 @@
 
 package com.devsmart.android.ui;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -35,6 +34,7 @@ import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
@@ -193,7 +193,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
 				/* Traverses _all_ views! Bypasses view recycler! */
 
-				HashMap<Integer, View> mRecycler = new HashMap<Integer, View>();
+				SparseArray<View> mRecycler = new SparseArray<View>();
 				int childCount = getAdapter().getCount();
 				for(int i = 0; i < childCount; i++) {
 					int type = getAdapter().getItemViewType(i);
