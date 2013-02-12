@@ -176,10 +176,13 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		
+		int height = getMeasuredHeight();
+		int width = getMeasuredWidth();
 
 		if(MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.EXACTLY) {
-			int height = 0;
-
+			height = 0;
+			
 			if(mMeasureHeightForVisibleOnly) {
 				int childCount = getChildCount();
 				for(int i = 0; i < childCount; i++) {
@@ -215,8 +218,26 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 				}
 			}
 
-			setMeasuredDimension(getMeasuredWidth(), height);
 		}
+		
+		if(MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.EXACTLY) {
+			// assumes that all child views have the same width
+			int childCount = getChildCount();
+			if (childCount > 0) {
+				View v = getChildAt(0);
+				v.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+				width = Math.min(width, childCount * v.getMeasuredWidth());
+			}
+			
+			if(MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST) {
+				int maxWidth = MeasureSpec.getSize(widthMeasureSpec);
+				if(maxWidth < width) {
+					width = maxWidth;
+				}
+			}
+		}
+		
+		setMeasuredDimension(width, height);
 	}
 
 	@Override
