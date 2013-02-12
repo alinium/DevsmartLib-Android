@@ -170,8 +170,8 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		child.measure(MeasureSpec.makeMeasureSpec(getWidth(), MeasureSpec.AT_MOST),
 				MeasureSpec.makeMeasureSpec(getHeight(), MeasureSpec.AT_MOST));
 	}
-	
-	
+
+
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -435,18 +435,20 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		}
 
 		private boolean isEventWithinView(MotionEvent e, View child) {
-            Rect viewRect = new Rect();
-            int[] childPosition = new int[2];
-            child.getLocationOnScreen(childPosition);
-            int left = childPosition[0];
-            int right = left + child.getWidth();
-            int top = childPosition[1];
-            int bottom = top + child.getHeight();
-            viewRect.set(left, top, right, bottom);
-            return viewRect.contains((int) e.getRawX(), (int) e.getRawY());
-        }
+			Rect viewRect = new Rect();
+			int[] childPosition = new int[2];
+			child.getLocationOnScreen(childPosition);
+			int left = childPosition[0];
+			int right = left + child.getWidth();
+			int top = childPosition[1];
+			int bottom = top + child.getHeight();
+			viewRect.set(left, top, right, bottom);
+			return viewRect.contains((int) e.getRawX(), (int) e.getRawY());
+		}
 	};
 
-
+	public int getMaxScrollX() {
+		return mMaxX;
+	}
 
 }
