@@ -2,20 +2,20 @@
  * HorizontalListView.java v1.5
 
  *
- * 
+ *
  * The MIT License
  * Copyright (c) 2011 Paul Soucy (paul@dev-smart.com)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -137,10 +137,10 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 
 	/**
-	 * @param visibleOnly - If set to true, then height is calculated 
-	 *        only using visible views. If set to false then height is 
+	 * @param visibleOnly - If set to true, then height is calculated
+	 *        only using visible views. If set to false then height is
 	 *        calculated using _all_ views in adapter. Default is true.
-	 *        Be very careful when passing false, as this may result in 
+	 *        Be very careful when passing false, as this may result in
 	 *        significant performance hit for larger number of views.
 	 */
 	public void setHeightMeasureMode(boolean visibleOnly) {
@@ -174,7 +174,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec); 
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
 		if(MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.EXACTLY) {
 			int height = 0;
@@ -219,7 +219,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 
 	@Override
-	protected synchronized void onLayout(boolean changed, int left, int top, 
+	protected synchronized void onLayout(boolean changed, int left, int top,
 			int right, int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
 
