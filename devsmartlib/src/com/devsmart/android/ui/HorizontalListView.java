@@ -378,6 +378,8 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
 	private OnGestureListener mOnGesture = new GestureDetector.SimpleOnGestureListener() {
 
+		private float lastDistanceX;
+
 		@Override
 		public boolean onDown(MotionEvent e) {
 			return HorizontalListView.this.onDown(e);
@@ -394,8 +396,9 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 				float distanceX, float distanceY) {
 
 			synchronized(HorizontalListView.this){
-				mNextX += (int)distanceX;
+				mNextX += ((distanceX + lastDistanceX)/2);
 			}
+			lastDistanceX = distanceX;
 			requestLayout();
 
 			return true;
